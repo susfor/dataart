@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>A Simple Map</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+    <link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+    <style>
+      body { margin:0; padding:0; }
+      #map { background-color: #293C41; position:absolute; top:0; bottom:0; width:100%; }
+      #output {
+        position: absolute;
+        background: rgba(255,255,255,0.2);
+        display: inline-block;
+        font-family: 'Arapey', serif;
+        height: 60px;
+        width: 360px;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        z-index: 100;
+    }
+    </style>
+</head>
+<body onload="getData();">
+    <div id='output'>
+        <div id='birdName'></div></br>
+        <div id='location'></div>
+    </div>
+    <div id='map'></div>
+
+    <script>
+    	var map = L.mapbox.map('map', 'juyoungp.i1l5lage').setView([-19.018043140479318, 22.345429148371103], 8);
+
+        var coordinates = [];
+        var birdNames = [];
+        var birdData = [];
+
+        var birdName = document.getElementById('birdName');
+        var coordinatexy = document.getElementById('location');
+        
+    	// add a new line to the map, but one with no points - yet
+        var bird0 = []; 
+        var bird1 = []; 
+        var bird2 = []; 
+        var bird3 = []; 
+        var bird4 = []; 
+        var bird5 = []; 
+        var bird6 = []; 
+        var bird7 = []; 
+        var bird8 = []; 
+        var bird9 = []; 
+        var bird10 = []; 
+        var bird11 = []; 
+        var bird12 = []; 
+        var bird13 = []; 
+        var bird14 = []; 
+        var bird15 = []; 
+        var bird16 = []; 
+        var bird17 = []; 
+        var bird18 = []; 
+        var bird19 = [];
+        var bird20 = [];
+        var bird21 = [];
+        var bird22 = [];
+        var bird23 = [];
+        var bird24 = [];
+        var bird25 = [];
+        var bird26 = [];
+        var bird27 = [];
+        var bird28 = [];
+        var bird29 = [];
+        var bird30 = [];
+        var bird31 = [];
+        var bird32 = [];
+        var bird33 = [];
+        var bird34 = [];
+        var bird35 = [];
+        var bird36 = [];
+        var bird37 = [];
+        var bird38 = [];
+        var bird39 = [];
+        var bird40 = [];
+        var bird41 = [];
+        var bird42 = [];
+        var bird43 = [];
+        var bird44 = [];
+
+
+
+        var colorList = ["#8A2BE2", "#A52A2A", "#DEB887", "#5F9EA0", "#7FFF00", "#D2691E", "#6495ED", "#FFF8DC", "#DC143C", "#008B8B", "#B8860B", "#006400", "#8FBC8F", "#2F4F4F", "#FF1493", "#FF00FF", "#FFD700", "#F0FFF0", "#7CFC00", "#ADD8E6", "#FAFAD2", "#D3D3D3", "#778899", "#B0C4DE", "#BA55D3", "#191970", "#FFE4B5", "#FF0000", "#8B4513", "#2E8B57", "#A0522D", "#C0C0C0", "#87CEEB", "#6A5ACD", "#00FF7F", "#FFFF00", "#9ACD32", "#0000FF", "#000000", "#F0FFFF", "#556B2F", "#FFF0F5", "#FFFFFF", "#DAA520", "#BC8F8F"];
+        //var polyline = L.polyline([]).addTo(map);
+        var polyline0 = L.polyline([],{color: '#FFFFCC', weight: '1'}).addTo(map);
+        var polyline1 = L.polyline([],{color: '#FFFF99', weight: '2'}).addTo(map);
+        var polyline2 = L.polyline([],{color: '#FFFF66', weight: '3'}).addTo(map);
+        var polyline3 = L.polyline([],{color: '#FFFF33', weight: '4'}).addTo(map);
+        var polyline4 = L.polyline([],{color: '#FFFF00', weight: '5'}).addTo(map);
+        var polyline5 = L.polyline([],{color: '#FFCC66', weight: '6'}).addTo(map);
+        var polyline6 = L.polyline([],{color: '#FFCC99', weight: '7'}).addTo(map);
+        var polyline7 = L.polyline([],{color: '#FFCC33', weight: '8'}).addTo(map);
+        var polyline8 = L.polyline([],{color: '#FFCC00', weight: '9'}).addTo(map);
+        var polyline9 = L.polyline([],{color: '#FF9966', weight: '10'}).addTo(map);
+        var polyline10 = L.polyline([],{color: '#FF9933', weight: '11'}).addTo(map);
+        var polyline11 = L.polyline([],{color: '#FF9900', weight: '12'}).addTo(map);
+        var polyline12 = L.polyline([],{color: '#FF6666', weight: '13'}).addTo(map);
+        var polyline13 = L.polyline([],{color: '#FF6633', weight: '14'}).addTo(map);
+        var polyline14 = L.polyline([],{color: '#FF6600', weight: '15'}).addTo(map);
+        var polyline15 = L.polyline([],{color: '#FF00FF', weight: '16'}).addTo(map);
+        var polyline16 = L.polyline([],{color: '#FFD700', weight: '17'}).addTo(map);
+        var polyline17 = L.polyline([],{color: '#F0FFF0', weight: '18'}).addTo(map);
+        var polyline18 = L.polyline([],{color: '#7CFC00', weight: '19'}).addTo(map);
+        var polyline19 = L.polyline([],{color: '#ADD8E6', weight: '20'}).addTo(map);
+        var polyline20 = L.polyline([],{color: '#FAFAD2', weight: '21'}).addTo(map);
+        var polyline21 = L.polyline([],{color: '#D3D3D3', weight: '22'}).addTo(map);
+        var polyline22 = L.polyline([],{color: '#778899', weight: '23'}).addTo(map);
+        var polyline23 = L.polyline([],{color: '#BA55D3', weight: '24'}).addTo(map);
+        var polyline24 = L.polyline([],{color: '#191970', weight: '25'}).addTo(map);
+        var polyline25 = L.polyline([],{color: '#FFE4B5', weight: '26'}).addTo(map);
+        var polyline26 = L.polyline([],{color: '#FF0000', weight: '27'}).addTo(map);
+        var polyline27 = L.polyline([],{color: '#8B4513', weight: '28'}).addTo(map);
+        var polyline28 = L.polyline([],{color: '#2E8B57', weight: '29'}).addTo(map);
+        var polyline29 = L.polyline([],{color: '#A0522D', weight: '30'}).addTo(map);
+        var polyline30 = L.polyline([],{color: '#C0C0C0', weight: '31'}).addTo(map);
+        var polyline31 = L.polyline([],{color: '#87CEEB', weight: '32'}).addTo(map);
+        var polyline32 = L.polyline([],{color: '#6A5ACD', weight: '33'}).addTo(map);
+        var polyline33 = L.polyline([],{color: '#00FF7F', weight: '34'}).addTo(map);
+        var polyline34 = L.polyline([],{color: '#FFFF00', weight: '35'}).addTo(map);
+        var polyline35 = L.polyline([],{color: '#9ACD32', weight: '36'}).addTo(map);
+        var polyline36 = L.polyline([],{color: '#0000FF', weight: '37'}).addTo(map);
+        var polyline37 = L.polyline([],{color: '#000000', weight: '38'}).addTo(map);
+        var polyline38 = L.polyline([],{color: '#F0FFFF', weight: '39'}).addTo(map);
+        var polyline39 = L.polyline([],{color: '#556B2F', weight: '40'}).addTo(map);
+        var polyline40 = L.polyline([],{color: '#FFF0F5', weight: '41'}).addTo(map);
+        var polyline41 = L.polyline([],{color: '#FFFFFF', weight: '42'}).addTo(map);
+        var polyline42 = L.polyline([],{color: '#DAA520', weight: '43'}).addTo(map);
+        var polyline43 = L.polyline([],{color: '#BC8F8F', weight: '2'}).addTo(map);
+        var polyline44 = L.polyline([],{color: '#B0C4DE', weight: '2'}).addTo(map);
+
+
+        
+        //var pointsAdded = 0;
+        var aa=0;
+        var b=0;
+        var c=0;
+        var d=0;
+        var e=0;
+        var f=0;
+        var g=0;
+        var h=0;
+        var l=0;
+        var m=0;
+        var n=0;
+        var o=0;
+        var p=0;
+        var q=0;
+        var r=0;
+        var s=0;
+        var t=0;
+        var u=0;
+        var v=0;
+        var w=0;
+        var x=0;
+        var y=0;
+        var z=0;
+        var aa=0;
+        var bb=0;
+        var cc=0;
+        var dd=0;
+        var ee=0;
+        var ff=0;
+        var gg=0;
+        var hh=0;
+        var ii=0;
+        var jj=0;
+        var kk=0;
+        var ll=0;
+        var mm=0;
+        var nn=0;
+        var oo=0;
+        var pp=0;
+        var qq=0;
+        var rr=0;
+        var ss=0;
+        var tt=0;
+        var uu=0;
+        var vv=0;
+        var ww=0;
+
+
+
+
+        
+        //console.log(line_points);
+        function getData(){
+        
+            $.ajax({
+                dataType: "json",
+                url: "bird.json",
+                }).done(function ( data ) {
+                // do my stuff
+                getCoordinates(data);
+                //console.log(data.length);
+                //console.log(data[0].geometry.coordinates[0])
+
+            });
+        }
+
+        function getCoordinates(data){
+            for(var i =0; i < data.length; i++){
+                if(birdNames.length == 0){
+                    birdNames.push(data[i].properties["Bird Name"]);
+                }
+                else{
+                    if(birdNames.indexOf(data[i].properties["Bird Name"]) != -1){
+                        
+                    } else{
+                        birdNames.push(data[i].properties["Bird Name"]);
+                        
+                    }
+                }
+            }
+
+            for(var k=0; k<data.length; k++){
+                var a = birdNames.indexOf(data[k].properties["Bird Name"]);
+                if(a == 0 ){
+                    bird0.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 1){
+                    bird1.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 2){
+                    bird2.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 3){
+                    bird3.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 4){
+                    bird4.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 5){
+                    bird5.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 6){
+                    bird6.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 7){
+                    bird7.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 8){
+                    bird8.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 9){
+                    bird9.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 10){
+                    bird10.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 11){
+                    bird11.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 12){
+                    bird12.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 13){
+                    bird13.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 14){
+                    bird14.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 15){
+                    bird15.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 16){
+                    bird16.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 17){
+                    bird17.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 18){
+                    bird18.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 19){
+                    bird19.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 20){
+                    bird20.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 21){
+                    bird21.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 22){
+                    bird22.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 23){
+                    bird23.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 24){
+                    bird24.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 25){
+                    bird25.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 26){
+                    bird26.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 27){
+                    bird27.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 28){
+                    bird28.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 29){
+                    bird29.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 30){
+                    bird30.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 31){
+                    bird31.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 32){
+                    bird32.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 33){
+                    bird33.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 34){
+                    bird34.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 35){
+                    bird35.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 36){
+                    bird36.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 37){
+                    bird37.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 38){
+                    bird38.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 39){
+                    bird39.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 40){
+                    bird40.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 41){
+                    bird41.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 42){
+                    bird42.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 43){
+                    bird43.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                } else if(a == 44){
+                    bird44.push([data[k].geometry.coordinates[1], data[k].geometry.coordinates[0]]);
+                }         
+            }
+            add();
+
+
+
+
+            //var polyline = L.polyline(coordinates, polyline_options).addTo(map);
+        }
+        
+
+        function add() {
+
+            var circle = L.circle([bird0[aa]["0"], bird0[aa]["1"]], 100, {
+                color: '#FFFFCC',
+                fillColor: '#FFFFCC',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline0.addLatLng(L.latLng([bird0[aa]["0"], bird0[aa]["1"]])); 
+            map.setView([bird0[aa]["0"], bird0[aa]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[0];
+            coordinatexy.innerHTML = "Coordinates: " + bird0[aa]["0"] + ", " + bird0[aa]["1"];   
+
+            if (++aa < bird0.length) window.setTimeout(add, 100);
+            else add1();
+
+        
+            
+
+        }
+        function add1(){
+            var circle = L.circle([bird1[b]["0"], bird1[b]["1"]], 100, {
+                color: '#FFFF99',
+                fillColor: '#FFFF99',
+                fillOpacity: 0.5
+            }).addTo(map);
+
+            //polyline1.addLatLng(L.latLng([bird1[b]["0"], bird1[b]["1"]]));
+            map.setView([bird1[b]["0"], bird1[b]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[1];
+            coordinatexy.innerHTML = "Coordinates: " + bird1[b]["0"] + ", " + bird1[b]["1"];  
+            if (++b < bird1.length) window.setTimeout(add1, 50);
+            else add3();
+
+        }
+        function add2(){
+            var circle = L.circle([bird2[c]["0"], bird2[c]["1"]], 100, {
+                color: '#FFFF66',
+                fillColor: '#FFFF66',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline2.addLatLng(L.latLng([bird2[c]["0"], bird2[c]["1"]]));
+            map.setView([bird2[c]["0"], bird2[c]["1"]], 12); 
+            birdName.innerHTML = "Bird Name: " + birdNames[2];
+            coordinatexy.innerHTML = "Coordinates: " + bird2[c]["0"] + ", " + bird2[c]["1"]; 
+            if (++c < bird2.length) window.setTimeout(add2, 50);
+            
+        }
+        function add3(){
+            var circle = L.circle([bird3[d]["0"], bird3[d]["1"]], 100, {
+                color: '#FFFF33',
+                fillColor: '#FFFF33',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline3.addLatLng(L.latLng([bird3[d]["0"], bird3[d]["1"]]));
+            map.setView([bird3[d]["0"], bird3[d]["1"]], 12); 
+            birdName.innerHTML = "Bird Name: " + birdNames[3];
+            coordinatexy.innerHTML = "Coordinates: " + bird3[d]["0"] + ", " + bird3[d]["1"];  
+            if (++d < bird3.length) window.setTimeout(add3, 50);
+            else add4();
+    
+            
+        }
+        function add4(){
+            var circle = L.circle([bird4[e]["0"], bird4[e]["1"]], 100, {
+                color: '#FFFF00',
+                fillColor: '#FFFF00',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline4.addLatLng(L.latLng([bird4[e]["0"], bird4[e]["1"]]));
+            map.setView([bird4[e]["0"], bird4[e]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[4];
+            coordinatexy.innerHTML = "Coordinates: " + bird4[e]["0"] + ", " + bird4[e]["1"];
+            if (++e < bird4.length) window.setTimeout(add4, 50);
+            else add5();
+            
+            
+        }
+        function add5(){
+            var circle = L.circle([bird5[f]["0"], bird5[f]["1"]], 100, {
+                color: '#FFCC66',
+                fillColor: '#FFCC66',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline5.addLatLng(L.latLng([bird5[f]["0"], bird5[f]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[5];
+            coordinatexy.innerHTML = "Coordinates: " + bird5[f]["0"] + ", " + bird5[f]["1"];
+            if (++f < bird5.length) window.setTimeout(add5, 50);
+            else add8();
+            //else add6();
+            
+        }
+        function add6(){
+            var circle = L.circle([bird6[g]["0"], bird6[g]["1"]], 100, {
+                color: '#FFCC99',
+                fillColor: '#FFCC99',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline6.addLatLng(L.latLng([bird6[g]["0"], bird6[g]["1"]]));
+            map.setView([bird6[g]["0"], bird6[g]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[6];
+            coordinatexy.innerHTML = "Coordinates: " + bird6[g]["0"] + ", " + bird6[g]["1"];
+            if (++g < bird6.length) window.setTimeout(add6, 50);
+            //else add7();
+            
+        }
+        function add7(){
+            var circle = L.circle([bird7[h]["0"], bird7[h]["1"]], 100, {
+                color: '#FFCC33',
+                fillColor: '#FFCC33',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline7.addLatLng(L.latLng([bird7[h]["0"], bird7[h]["1"]]));
+            //map.setView([bird7[h]["0"], bird7[h]["1"]], 13);
+            birdName.innerHTML = "Bird Name: " + birdNames[7];
+            coordinatexy.innerHTML = "Coordinates: " + bird7[h]["0"] + ", " + bird7[h]["1"];
+            if (++h < bird7.length) window.setTimeout(add7, 50);
+        }
+        function add8(){
+            var circle = L.circle([bird8[l]["0"], bird8[l]["1"]], 100, {
+                color: '#FFCC00',
+                fillColor: '#FFCC00',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline8.addLatLng(L.latLng([bird8[l]["0"], bird8[l]["1"]]));
+            map.setView([bird8[l]["0"], bird8[l]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[8];
+            coordinatexy.innerHTML = "Coordinates: " + bird8[l]["0"] + ", " + bird8[l]["1"];
+            if (++l < bird8.length) window.setTimeout(add8, 50);
+            else add9();
+
+            
+        }
+        function add9(){
+            var circle = L.circle([bird9[m]["0"], bird9[m]["1"]], 100, {
+                color: '#FF9966',
+                fillColor: '#FF9966',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline9.addLatLng(L.latLng([bird9[m]["0"], bird9[m]["1"]]));
+            map.setView([bird9[m]["0"], bird9[m]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[9];
+            coordinatexy.innerHTML = "Coordinates: " + bird9[m]["0"] + ", " + bird9[m]["1"]; 
+            if (++m < bird9.length) window.setTimeout(add9, 50);
+            else add10();
+
+        }
+        function add10(){
+            var circle = L.circle([bird10[n]["0"], bird10[n]["1"]], 100, {
+                color: '#FF9933',
+                fillColor: '#FF9933',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline10.addLatLng(L.latLng([bird10[n]["0"], bird10[n]["1"]]));
+            map.setView([bird10[n]["0"], bird10[n]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[10];
+            coordinatexy.innerHTML = "Coordinates: " + bird10[n]["0"] + ", " + bird10[n]["1"];  
+            if (++n < bird10.length) window.setTimeout(add10, 50);
+            else add11();
+ 
+
+        }
+        function add11(){
+            var circle = L.circle([bird11[o]["0"], bird11[o]["1"]], 100, {
+                color: '#FF9900',
+                fillColor: '#FF9900',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline11.addLatLng(L.latLng([bird11[o]["0"], bird11[o]["1"]]));
+            map.setView([bird11[o]["0"], bird11[o]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[11];
+            coordinatexy.innerHTML = "Coordinates: " + bird11[o]["0"] + ", " + bird11[o]["1"]; 
+            if (++o < bird11.length) window.setTimeout(add11, 50);
+            else add12();
+
+
+        }
+        function add12(){
+            var circle = L.circle([bird12[p]["0"], bird12[p]["1"]], 100, {
+                color: '#FF6666',
+                fillColor: '#FF6666',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline12.addLatLng(L.latLng([bird12[p]["0"], bird12[p]["1"]]));
+            map.setView([bird12[p]["0"], bird12[p]["1"]], 12); 
+            birdName.innerHTML = "Bird Name: " + birdNames[12];
+            coordinatexy.innerHTML = "Coordinates: " + bird12[p]["0"] + ", " + bird12[p]["1"];
+            if (++p < bird12.length) window.setTimeout(add12, 50);
+            else add13();
+ 
+
+        }
+        function add13(){
+            var circle = L.circle([bird13[q]["0"], bird13[q]["1"]], 100, {
+                color: '#FF6633',
+                fillColor: '#FF6633',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline13.addLatLng(L.latLng([bird13[q]["0"], bird13[q]["1"]]));
+            map.setView([bird13[q]["0"], bird13[q]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[13];
+            coordinatexy.innerHTML = "Coordinates: " + bird13[q]["0"] + ", " + bird13[q]["1"]; 
+            if (++q < bird13.length) window.setTimeout(add13, 50);
+            else add14();
+   
+
+        }
+        function add14(){
+            var circle = L.circle([bird14[r]["0"], bird14[r]["1"]], 100, {
+                color: '#FF6600',
+                fillColor: '#FF6600',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline14.addLatLng(L.latLng([bird14[r]["0"], bird14[r]["1"]]));
+            map.setView([bird14[r]["0"], bird14[r]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[14];
+            coordinatexy.innerHTML = "Coordinates: " + bird14[r]["0"] + ", " + bird14[r]["1"]; 
+            if (++r < bird14.length) window.setTimeout(add14, 50);
+            else add15();
+
+
+        }
+        function add15(){
+            var circle = L.circle([bird15[s]["0"], bird15[s]["1"]], 100, {
+                color: '#CC6666',
+                fillColor: '#CC6666',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline15.addLatLng(L.latLng([bird15[s]["0"], bird15[s]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[15];
+            coordinatexy.innerHTML = "Coordinates: " + bird15[s]["0"] + ", " + bird15[s]["1"];
+            if (++s < bird15.length) window.setTimeout(add15, 50);
+            else add16();
+            
+        }
+        function add16() {
+            var circle = L.circle([bird0[t]["0"], bird16[t]["1"]], 100, {
+                color: '#CC6633',
+                fillColor: '#CC6633',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline16.addLatLng(L.latLng([bird0[t]["0"], bird16[t]["1"]]));
+            //map.setView([bird0[t]["0"], bird16[t]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[16];
+            coordinatexy.innerHTML = "Coordinates: " + bird16[t]["0"] + ", " + bird16[t]["1"];    
+            if (++t < bird16.length) window.setTimeout(add16, 50);
+            else add17();
+            
+
+        }
+        function add17(){
+            var circle = L.circle([bird17[u]["0"], bird17[u]["1"]], 100, {
+                color: '#CC6600',
+                fillColor: '#CC6600',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline17.addLatLng(L.latLng([bird17[u]["0"], bird17[u]["1"]]));
+            //map.setView([bird17[u]["0"], bird17[u]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[17];
+            coordinatexy.innerHTML = "Coordinates: " + bird17[u]["0"] + ", " + bird17[u]["1"];
+            if (++u < bird17.length) window.setTimeout(add17, 50);
+            else add18();
+            
+        }
+        function add18(){
+            var circle = L.circle([bird18[v]["0"], bird18[v]["1"]], 100, {
+                color: '#FF3333',
+                fillColor: '#FF3333',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline18.addLatLng(L.latLng([bird18[v]["0"], bird18[v]["1"]]));
+            //map.setView([bird18[v]["0"], bird18[v]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[18];
+            coordinatexy.innerHTML = "Coordinates: " + bird18[v]["0"] + ", " + bird18[v]["1"];
+            if (++v < bird18.length) window.setTimeout(add18, 50);
+            else add19();
+         
+            
+        }
+        function add19(){
+            var circle = L.circle([bird19[w]["0"], bird19[w]["1"]], 100, {
+                color: '#FF3300',
+                fillColor: '#FF3300',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline19.addLatLng(L.latLng([bird19[w]["0"], bird19[w]["1"]]));
+            //map.setView([bird19[w]["0"], bird19[w]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[19];
+            coordinatexy.innerHTML = "Coordinates: " + bird19[w]["0"] + ", " + bird19[w]["1"];
+            if (++w < bird19.length) window.setTimeout(add19, 50);
+            else add20();
+          
+            
+        }
+        function add20(){
+            var circle = L.circle([bird20[x]["0"], bird20[x]["1"]], 100, {
+                color: '#FF0033',
+                fillColor: '#FF0033',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline20.addLatLng(L.latLng([bird20[x]["0"], bird20[x]["1"]]));
+            //map.setView([bird20[x]["0"], bird20[x]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[20];
+            coordinatexy.innerHTML = "Coordinates: " + bird20[x]["0"] + ", " + bird20[x]["1"];
+            if (++x < bird20.length) window.setTimeout(add20, 50);
+            else add21();
+      
+            
+        }
+        function add21(){
+            var circle = L.circle([bird21[y]["0"], bird21[y]["1"]], 100, {
+                color: '#FF0000',
+                fillColor: '#FF0000',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline21.addLatLng(L.latLng([bird21[y]["0"], bird21[y]["1"]]));
+            //map.setView([bird21[y]["0"], bird21[y]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[21];
+            coordinatexy.innerHTML = "Coordinates: " + bird21[y]["0"] + ", " + bird21[y]["1"];
+            if (++y < bird21.length) window.setTimeout(add21, 50);
+            else add22();
+          
+            
+        }
+        function add22(){
+            var circle = L.circle([bird22[z]["0"], bird22[z]["1"]], 100, {
+                color: '#CC0033',
+                fillColor: '#CC0033',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline22.addLatLng(L.latLng([bird22[z]["0"], bird22[z]["1"]]));
+            //map.setView([bird22[z]["0"], bird22[z]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[22];
+            coordinatexy.innerHTML = "Coordinates: " + bird22[z]["0"] + ", " + bird22[z]["1"];
+            if (++z < bird22.length) window.setTimeout(add22, 50);
+            else add23();
+       
+            
+        }
+        function add23(){
+            var circle = L.circle([bird23[bb]["0"], bird23[bb]["1"]], 100, {
+                color: '#CC0000',
+                fillColor: '#CC0000',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline23.addLatLng(L.latLng([bird23[bb]["0"], bird23[bb]["1"]]));
+            //map.setView([bird23[bb]["0"], bird23[bb]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[23];
+            coordinatexy.innerHTML = "Coordinates: " + bird23[bb]["0"] + ", " + bird23[bb]["1"];
+            if (++bb < bird23.length) window.setTimeout(add23, 50);
+            else add24();
+         
+            
+        }
+        function add24(){
+            var circle = L.circle([bird24[cc]["0"], bird24[cc]["1"]], 100, {
+                color: '#993333',
+                fillColor: '#993333',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline24.addLatLng(L.latLng([bird24[cc]["0"], bird24[cc]["1"]]));
+            //map.setView([bird24[cc]["0"], bird24[cc]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[24];
+            coordinatexy.innerHTML = "Coordinates: " + bird24[cc]["0"] + ", " + bird24[cc]["1"];
+            if (++cc < bird24.length) window.setTimeout(add24, 50);
+            else add25();
+       
+            
+        }
+        function add25(){
+            var circle = L.circle([bird25[dd]["0"], bird25[dd]["1"]], 100, {
+                color: '#993300',
+                fillColor: '#993300',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline25.addLatLng(L.latLng([bird25[dd]["0"], bird25[dd]["1"]]));
+            //map.setView([bird25[dd]["0"], bird25[dd]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[25];
+            coordinatexy.innerHTML = "Coordinates: " + bird25[dd]["0"] + ", " + bird25[dd]["1"];
+            if (++dd < bird25.length) window.setTimeout(add25, 50);
+            else add26();
+        }
+
+        function add26(){
+            var circle = L.circle([bird26[ee]["0"], bird26[ee]["1"]], 100, {
+                color: '#990033',
+                fillColor: '#990033',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline26.addLatLng(L.latLng([bird26[ee]["0"], bird26[ee]["1"]]));
+            //map.setView([bird26[ee]["0"], bird26[ee]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[26];
+            coordinatexy.innerHTML = "Coordinates: " + bird26[ee]["0"] + ", " + bird26[ee]["1"];
+            if (++ee < bird26.length) window.setTimeout(add26, 50);
+            else add27();
+         
+
+        }
+        function add27(){
+            var circle = L.circle([bird27[ff]["0"], bird27[ff]["1"]], 100, {
+                color: '#990000',
+                fillColor: '#990000',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline27.addLatLng(L.latLng([bird27[ff]["0"], bird27[ff]["1"]]));
+            //map.setView([bird27[ff]["0"], bird27[ff]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[27];
+            coordinatexy.innerHTML = "Coordinates: " + bird27[ff]["0"] + ", " + bird27[ff]["1"];
+            if (++ff < bird27.length) window.setTimeout(add27, 50);
+            else add28();
+     
+
+        }
+        function add28(){
+            var circle = L.circle([bird28[gg]["0"], bird28[gg]["1"]], 100, {
+                color: '#990066',
+                fillColor: '#990066',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline28.addLatLng(L.latLng([bird28[gg]["0"], bird28[gg]["1"]]));
+            //map.setView([bird28[gg]["0"], bird28[gg]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[28];
+            coordinatexy.innerHTML = "Coordinates: " + bird28[gg]["0"] + ", " + bird11[gg]["1"];
+            if (++gg < bird28.length) window.setTimeout(add28, 50);
+            else add29();
+
+
+        }
+        function add29(){
+            var circle = L.circle([bird29[hh]["0"], bird29[hh]["1"]], 100, {
+                color: '#993366',
+                fillColor: '#993366',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline29.addLatLng(L.latLng([bird29[hh]["0"], bird29[hh]["1"]]));
+            map.setView([bird29[hh]["0"], bird29[hh]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[29];
+            coordinatexy.innerHTML = "Coordinates: " + bird29[hh]["0"] + ", " + bird29[hh]["1"];
+            if (++hh < bird29.length) window.setTimeout(add29, 50);
+            else add30();
+
+
+        }
+        function add30(){
+            var circle = L.circle([bird30[ii]["0"], bird30[ii]["1"]], 100, {
+                color: '#CC3366',
+                fillColor: '#CC3366',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline30.addLatLng(L.latLng([bird30[ii]["0"], bird30[ii]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[30];
+            coordinatexy.innerHTML = "Coordinates: " + bird30[ii]["0"] + ", " + bird30[ii]["1"];
+            if (++ii < bird30.length) window.setTimeout(add30, 50);
+            else add31();
+
+        }
+        function add31(){
+            var circle = L.circle([bird31[jj]["0"], bird31[jj]["1"]], 100, {
+                color: '#CC0066',
+                fillColor: '#CC0066',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline31.addLatLng(L.latLng([bird31[jj]["0"], bird31[jj]["1"]]));
+            map.setView([bird31[jj]["0"], bird31[jj]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[31];
+            coordinatexy.innerHTML = "Coordinates: " + bird31[jj]["0"] + ", " + bird31[jj]["1"];
+            if (++jj < bird31.length) window.setTimeout(add31, 50);
+            else add32();
+        }
+        function add32(){
+            var circle = L.circle([bird32[kk]["0"], bird32[kk]["1"]], 100, {
+                color: '#FF3366',
+                fillColor: '#FF3366',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline32.addLatLng(L.latLng([bird32[kk]["0"], bird32[kk]["1"]]));
+            map.setView([bird32[kk]["0"], bird32[kk]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[32];
+            coordinatexy.innerHTML = "Coordinates: " + bird32[kk]["0"] + ", " + bird32[kk]["1"];
+            if (++kk < bird32.length) window.setTimeout(add32, 50);
+            else add33();
+        }
+        function add33(){
+            var circle = L.circle([bird33[ll]["0"], bird33[ll]["1"]], 100, {
+                color: '#FF0066',
+                fillColor: '#FF0066',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline33.addLatLng(L.latLng([bird33[ll]["0"], bird33[ll]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[33];
+            coordinatexy.innerHTML = "Coordinates: " + bird33[ll]["0"] + ", " + bird33[ll]["1"];
+            if (++ll < bird33.length) window.setTimeout(add33, 50);
+            else add34();
+
+        }
+        function add34(){
+            var circle = L.circle([bird34[mm]["0"], bird34[mm]["1"]], 100, {
+                color: '#FF3399',
+                fillColor: '#FF3399',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline34.addLatLng(L.latLng([bird34[mm]["0"], bird34[mm]["1"]]));
+            map.setView([bird34[mm]["0"], bird34[mm]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[34];
+            coordinatexy.innerHTML = "Coordinates: " + bird34[mm]["0"] + ", " + bird34[mm]["1"];
+            if (++mm < bird34.length) window.setTimeout(add34, 50);
+            else add35();
+
+        }
+        function add35(){
+            var circle = L.circle([bird35[nn]["0"], bird35[nn]["1"]], 100, {
+                color: '#FF0099',
+                fillColor: '#FF0099',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline35.addLatLng(L.latLng([bird35[nn]["0"], bird35[nn]["1"]]));
+            map.setView([bird35[nn]["0"], bird35[nn]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[35];
+            coordinatexy.innerHTML = "Coordinates: " + bird35[nn]["0"] + ", " + bird35[nn]["1"];
+            if (++nn < bird28.length) window.setTimeout(add35, 50);
+            else add36();
+
+        }
+        function add36(){
+            var circle = L.circle([bird36[oo]["0"], bird36[oo]["1"]], 100, {
+                color: '#FFCCCC',
+                fillColor: '#FFCCCC',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline36.addLatLng(L.latLng([bird36[oo]["0"], bird36[oo]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[36];
+            coordinatexy.innerHTML = "Coordinates: " + bird36[oo]["0"] + ", " + bird36[oo]["1"];
+            if (++oo < bird36.length) window.setTimeout(add36, 50);
+            else add37();
+
+        }
+        function add37(){
+            var circle = L.circle([bird37[pp]["0"], bird37[pp]["1"]], 100, {
+                color: '#CC9999',
+                fillColor: '#CC9999',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline37.addLatLng(L.latLng([bird37[pp]["0"], bird37[pp]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[37];
+            coordinatexy.innerHTML = "Coordinates: " + bird37[pp]["0"] + ", " + bird37[pp]["1"];
+            if (++oo < bird37.length) window.setTimeout(add37, 50);
+            else add38();
+
+        }
+        function add38(){
+            var circle = L.circle([bird38[qq]["0"], bird38[qq]["1"]], 100, {
+                color: '#FF9999',
+                fillColor: '#FF9999',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline38.addLatLng(L.latLng([bird38[qq]["0"], bird38[qq]["1"]]));
+            birdName.innerHTML = "Bird Name: " + birdNames[38];
+            coordinatexy.innerHTML = "Coordinates: " + bird38[qq]["0"] + ", " + bird38[qq]["1"];
+            if (++qq < bird38.length) window.setTimeout(add38, 50);
+            else add39();
+        }
+        function add39(){
+            var circle = L.circle([bird39[rr]["0"], bird39[rr]["1"]], 100, {
+                color: '#FF6699',
+                fillColor: '#FF6699',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline39.addLatLng(L.latLng([bird39[rr]["0"], bird39[rr]["1"]]));
+            //map.setView([bird39[rr]["0"], bird39[rr]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[39];
+            coordinatexy.innerHTML = "Coordinates: " + bird39[rr]["0"] + ", " + bird39[rr]["1"];
+            if (++rr < bird39.length) window.setTimeout(add39, 50);
+            else add40();
+
+        }
+        function add40(){
+            var circle = L.circle([bird40[ss]["0"], bird40[ss]["1"]], 100, {
+                color: '#FF99CC',
+                fillColor: '#FF99CC',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline40.addLatLng(L.latLng([bird40[ss]["0"], bird40[ss]["1"]]));
+            //map.setView([bird40[ss]["0"], bird40[ss]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[40];
+            coordinatexy.innerHTML = "Coordinates: " + bird40[ss]["0"] + ", " + bird40[ss]["1"];
+            if (++ss < bird40.length) window.setTimeout(add40, 50);
+            else add41();
+
+        }
+        function add41(){
+            var circle = L.circle([bird41[tt]["0"], bird41[tt]["1"]], 100, {
+                color: '#FF66CC',
+                fillColor: '#FF66CC',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline41.addLatLng(L.latLng([bird41[tt]["0"], bird41[tt]["1"]]));
+            //map.setView([bird41[tt]["0"], bird41[tt]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[41];
+            coordinatexy.innerHTML = "Coordinates: " + bird41[tt]["0"] + ", " + bird41[tt]["1"];
+            if (++tt < bird41.length) window.setTimeout(add41, 50);
+            else add42();
+
+        }
+        function add42(){
+            var circle = L.circle([bird42[uu]["0"], bird42[uu]["1"]], 100, {
+                color: '#FFCCFF',
+                fillColor: '#FFCCFF',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline42.addLatLng(L.latLng([bird42[uu]["0"], bird42[uu]["1"]]));
+            map.setView([bird42[uu]["0"], bird42[uu]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[42];
+            coordinatexy.innerHTML = "Coordinates: " + bird42[uu]["0"] + ", " + bird42[uu]["1"];
+            if (++uu < bird42.length) window.setTimeout(add42, 50);
+            else add43();
+
+        }
+        function add43(){
+            var circle = L.circle([bird43[vv]["0"], bird43[vv]["1"]], 100, {
+                color: '#FF99FF',
+                fillColor: '#FF99FF',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline43.addLatLng(L.latLng([bird43[vv]["0"], bird43[vv]["1"]]));
+            map.setView([bird43[vv]["0"], bird43[vv]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[43];
+            coordinatexy.innerHTML = "Coordinates: " + bird43[vv]["0"] + ", " + bird43[vv]["1"];
+            if (++vv < bird43.length) window.setTimeout(add43, 50);
+            else add44();
+        }
+        function add44(){
+            var circle = L.circle([bird44[ww]["0"], bird44[ww]["1"]], 100, {
+                color: '#FF66FF',
+                fillColor: '#FF66FF',
+                fillOpacity: 0.5
+            }).addTo(map);
+            //polyline44.addLatLng(L.latLng([bird44[ww]["0"], bird44[ww]["1"]]));
+            map.setView([bird44[ww]["0"], bird44[ww]["1"]], 12);
+            birdName.innerHTML = "Bird Name: " + birdNames[44];
+            coordinatexy.innerHTML = "Coordinates: " + bird44[ww]["0"] + ", " + bird44[ww]["1"];
+            if (++ww < bird44.length) window.setTimeout(add44, 50);
+            else map.setView([bird0[12]["0"], bird0[12]["1"]], 13.5);
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>
